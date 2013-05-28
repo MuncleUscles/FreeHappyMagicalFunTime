@@ -1,9 +1,8 @@
 int windowW = 600;
 int windowH = 600;
+static boolean opengl = true; //Set False if opengl problems
 
 boolean showHelp = true;
-
-boolean opengl = true;
 boolean fullscreen = true;
 
 float circleRes = 100;
@@ -51,13 +50,12 @@ boolean smoo=false;
 
   
 boolean sketchFullScreen() {
-  return fullscreen;//true;//false;
+  return fullscreen;
 }
 
 void setup()
 {
      
-  //orientation(LANDSCAPE);
   if(fullscreen)
   {
     windowW = displayWidth;
@@ -74,14 +72,10 @@ void setup()
   
   
   if (frame != null) {
-    //frame.setResizable(true);
     frame.setSize(windowW, windowH);
     frame.setLocation((displayWidth - windowW)/2, (displayHeight - windowH)/2);
-    //if(!fullscreen) frame.setBorder();
   }
-  
-  //size(windowW, windowH);
-  
+ 
   colorMode(HSB, 1000);
   background(1000);
   randomize();
@@ -103,7 +97,6 @@ void randomize()
   hueChange = random(5, 15);
   if(random(1) > 0.5) hueChange = -hueChange;  
   
-  //circleHueCoef = 1/random(0.001, 0.1);
   minHue = random(0, 1000);
   maxHue = (minHue + random(200, 300))%1000;
   minSat = random(100, 500);
@@ -154,9 +147,6 @@ void draw()
   for(int j=0; j < numOfLines; j++)
   {
     
-    
-    
-    
     pushMatrix();
     for(float i=0; i > -maxDiam/2; i -= lineSpacing )
     {
@@ -193,7 +183,6 @@ void draw()
       vertex(x1*2,  lineLength/2);
       vertex(-x1,  -lineLength/2);
       vertex(-x1*2,  -lineLength/2);
-      // etc;
       endShape();
       
       popMatrix();
@@ -245,12 +234,6 @@ void keyPressed()
   {
     showHelp = !showHelp;
   }  
-  else if(key == 's' || key == 'S')
-  {
-    smoo = !smoo;
-    if(smoo) smooth();
-    else noSmooth();
-  }  
   else if(key == ' ')
   {
     angleChange = -angleChange;
@@ -263,7 +246,6 @@ void keyPressed()
       windowW -= displayWidth/10;
       windowH -= displayHeight/10;
     }
-    
     
     setup();
   } 
@@ -281,19 +263,7 @@ void keyPressed()
   {
     fullscreen = !fullscreen;
     setup();
-  } 
- /* 
-  else if(key == 'g' || key == 'G')
-  {
-    opengl = !opengl;
-    if(opengl)
-    {
-      fullscreen = true;
-    }
-    
-    setup();    
-  } 
-  */
+  }  
 }
 
 void mouseClicked()
