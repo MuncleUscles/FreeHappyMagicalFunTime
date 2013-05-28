@@ -4,3 +4,9 @@
 *.jar
 *.war
 *.ear
+
+
+*.jpeg
+*.exe
+application.windows32
+application.windows64
