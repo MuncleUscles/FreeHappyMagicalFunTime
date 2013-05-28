@@ -161,7 +161,7 @@ void draw()
       
       fill(fh, fs, fv, fa); 
       
-      strokeWeight(1);
+      strokeWeight(abs(i)/strokeCoef % 2 + 1);
       
       float sh = fh;
       float ss = fs + i*strokeSatCoef % strokeSatMaxChange;
